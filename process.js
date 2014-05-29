@@ -2,8 +2,6 @@ module.exports = function (request) {
 
 	this.a = function (callback) {
 
-		console.log(request.url);
-
 		callback(null, "a");
 
 	};
@@ -28,6 +26,11 @@ module.exports = function (request) {
 	this.taskB = function (callback) {
 
 		callback(null, "taskABdone");
+
+	};
+	this.url_er = function (callback) {
+
+		callback(true, "URL not supported");
 
 	};
 };

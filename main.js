@@ -4,38 +4,43 @@ var http = require("http");
 var wireframe = require("./lib/wireframe");
 var API = require("./process");
 
-
-
 var server = http.createServer(function (req, res) {
 	api = new API(req);
 	var structure = {
 		"GET": {
 			"/test/test": {
 				"sync": [
-        api.a,
-        api.b,
-        api.c
-      ],
+          api.a,
+          api.b,
+          api.c
+        ],
+				"async": {
+
+				}
+			},
+			"/test/other": {
+				"sync": [
+          api.a,
+          api.b,
+          api.c
+        ],
 				"async": {
 					"taskA": api.taskA,
 					"taskB": api.taskB
 				}
 			},
-			"/test/other": {
-				"sync": [
-        api.a,
-        api.b,
-        api.c
-      ],
+			"*": {
+				"sync": [],
 				"async": {
-					"taskA": api.taskA,
-					"taskB": api.taskB
+					"n": api.url_er
 				}
 			}
 		}
 	};
 
 	wireframe(req, structure, function (err, response) {
+
+		console.log(req.url);
 		console.log("error: " + err);
 		console.log("response: " + JSON.stringify(response, undefined, 2));
 		res.end("done");
