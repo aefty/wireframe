@@ -1,45 +1,19 @@
 // Network Startup
 var http = require("http");
-
+var api = require("./process");
+var errors = require("./error");
 var wireframe = require("./lib/wireframe");
-var API = require("./process");
+var structure = require("./structure.json");
 
+var pkg = {
+  "api": api,
+  "errors": errors
+};
+
+poinat = new wireframe(structure, pkg);
 var server = http.createServer(function (req, res) {
-	api = new API(req);
-	var structure = {
-		"GET": {
-			"/test/test": {
-				"sync": [
-          api.a,
-          api.b,
-          api.c
-        ],
-				"async": {
 
-				}
-			},
-			"/test/other": {
-				"sync": [
-          api.a,
-          api.b,
-          api.c
-        ],
-				"async": {
-					"taskA": api.taskA,
-					"taskB": api.taskB
-				}
-			},
-			"*": {
-				"sync": [],
-				"async": {
-					"n": api.url_er
-				}
-			}
-		}
-	};
-
-	wireframe(req, structure, function (err, response) {
-
+	poinat.run(req, function (err, response) {
 		console.log(req.url);
 		console.log("error: " + err);
 		console.log("response: " + JSON.stringify(response, undefined, 2));
@@ -48,4 +22,4 @@ var server = http.createServer(function (req, res) {
 
 });
 
-server.listen(8080, "localhost");
+server.listen(80);
