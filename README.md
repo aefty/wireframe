@@ -3,7 +3,7 @@
 Wireframe is a thin wrapper that routes your requests and processes them based on a JSON template. This framework minimizes code duplication and allows a flexable workflow that asynchronolsy processes a set of synchronouse and asyncrnouse tasks. 
 
 ```
-Response =  Async(Request){ Return Sync([F(a),F(b),F(c)..]) + Async([F(a),F(b),F(c)...]) };
+Response =  Async(Request){ Sync(Request){[F(a),F(b)..]} + Async(Request){[F(a),F(b)...]} }
 ```
 
 ## Install
@@ -16,7 +16,10 @@ npm install wireframe
 ## Usage
 
 
-'''
+```JavaScript
+// mainFile.js
+
+var http = requier("http");
 
 var wireframe = require("wireframe"); // Load Module
 
@@ -29,9 +32,16 @@ var pkgs = {
 	"appError": processError
 };
 
+
+var server = http.createServer(function(req, res) {
+
 var api = new wireframe(appWorkFlow,apkgs);
 
+});
+
+server.listen(8080, "localhost");
 
 
+```
 
 ## License
