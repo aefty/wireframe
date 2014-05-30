@@ -1,5 +1,7 @@
 // Network Startup
 var http = require("http");
+var urlglob = require("urlglob");
+
 
 var api = require("./process-api");
 var auth = require("./process-auth");
@@ -22,22 +24,20 @@ api2 = new wireframe(api2_structrue, pkgs);
 
 var server = http.createServer(function(req, res) {
 
-   var u = req.url.split("/");
-
-   var output = function(err, response) {
+   var output = function(err, data) {
       console.log(req.url);
       console.log("error: " + err);
-      console.log("response: " + JSON.stringify(response, undefined, 2));
+      console.log("response: " + JSON.stringify(data, undefined, 2));
       res.end("done");
    };
 
-   switch (u[0]) {
+   switch (true) {
 
-      case "api1":
+      case urlglob("/api1/*", req.url):
          api1.run(req, output);
          break;
 
-      case "api2":
+      case urlglob("/api2/*", req.url):
          api2.run(req, output);
          break;
 

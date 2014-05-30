@@ -10,6 +10,7 @@ module.exports = function(request) {
 
       var data = {};
       data.login = true;
+      console.log("login");
 
       Callback(null, data);
    };
@@ -19,6 +20,7 @@ module.exports = function(request) {
       data.getData = {
          "user_id": 1234
       };
+      console.log("getData");
 
       Callback(null, data);
    };

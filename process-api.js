@@ -18,6 +18,7 @@ module.exports = function(request) {
 
    };
 
+
    this.doStats = function(data, Callback) {
 
       for (var key in data) {
