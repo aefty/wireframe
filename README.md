@@ -56,21 +56,15 @@ module.exports = function(request) {
    	Callback(null, data);
    };
    
-     // more ...
-   
    //Async Methods
    this.writeDB = function(Callback) {
    	// Do stuff... 
    	Callback(null, data);
    };
-      this.writeDB2 = function(Callback) {
-   	// Do stuff... 
-   	Callback(null, data);
-   };
-   
-   // more ...
 };
+```
 
+```JavaScript
 
 // processError.js
 module.exports = function(request) {
@@ -78,7 +72,7 @@ module.exports = function(request) {
    //Sync Methods
 
    //Async Methods
-   this.wrongMethod = function(Callback) {
+   this.wrongURL = function(Callback) {
    	// Do stuff... 
    	Callback(null, data);
    };
@@ -91,7 +85,6 @@ module.exports = function(request) {
 
 ```JSON
 // workflow.json
-
 {
   "GET": {
     "/api/stats": {
@@ -100,8 +93,7 @@ module.exports = function(request) {
         "procAPI.doStats"
       ],
       "async": {
-        "taskA": "procAPI.writeDB",
-        "taskB": "procAPI.WriteDB2"
+        "taskA": "procAPI.writeDB"
       }
     },
     "*": {
@@ -117,12 +109,13 @@ module.exports = function(request) {
         "procAPI.getData"
       ]
     },
-    "/api/logout": {
+    "*": {
       "async": {
-        "taskA": "procAPI.writeDB",
-        "taskB": "procAPI.WriteDB2"
+        "e": "procErr.wrongURL"
       }
-    },
+    }
+  },
+  "*": {
     "*": {
       "async": {
         "e": "procErr.wrongURL"
