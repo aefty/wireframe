@@ -1,19 +1,16 @@
 # wireframe
 
-Wireframe is a thin wrapper that routes your requests and processes them based on a JSON template. The workflow is generalized to a "asynchronously processing a synchronous and asynchronous set of processes/functions". This is an ideal for writing light weight API that
+Wireframe is a thin wrapper that routes your requests and processes them based on a JSON template. This framework minimizes code duplication and allows a flexable workflow that asynchronolsy processes a set of synchronouse and asyncrnouse tasks. 
 
-				/--(sync)---F[a]->F[b]->F[c]-\
-Request>--<                                >——>Response
-				\--(async)--F[A]-------------/
-							\--F[B]--/
-							 \-F[C]-/
-
+```
+Response =  Async(Request){ Return Sync([F(a),F(b),F(c)..]) + Async([F(a),F(b),F(c)...]) };
+```
 
 ## Install
 
-'''
+```Shell
 npm install wireframe
-'''
+```
 
 
 ## Usage
