@@ -1,25 +1,49 @@
 // Network Startup
 var http = require("http");
-var api = require("./process");
-var errors = require("./error");
-var wireframe = require("./lib/wireframe");
-var structure = require("./structure.json");
 
-var pkg = {
-  "api": api,
-  "errors": errors
+var api = require("./process-api");
+var auth = require("./process-auth");
+var e = require("./process-e");
+
+var wireframe = require("./lib/wireframe");
+
+var api1_structrue = require("./structure-api1.json");
+var api2_structrue = require("./structure-api2.json");
+
+var pkgs = {
+   "api": api,
+   "auth": auth,
+   "e": e
 };
 
-poinat = new wireframe(structure, pkg);
-var server = http.createServer(function (req, res) {
+api1 = new wireframe(api1_structrue, pkgs);
+api2 = new wireframe(api2_structrue, pkgs);
 
-	poinat.run(req, function (err, response) {
-		console.log(req.url);
-		console.log("error: " + err);
-		console.log("response: " + JSON.stringify(response, undefined, 2));
-		res.end("done");
-	});
 
+var server = http.createServer(function(req, res) {
+
+   var u = req.url.split("/");
+
+   var output = function(err, response) {
+      console.log(req.url);
+      console.log("error: " + err);
+      console.log("response: " + JSON.stringify(response, undefined, 2));
+      res.end("done");
+   };
+
+   switch (u[0]) {
+
+      case "api1":
+         api1.run(req, output);
+         break;
+
+      case "api2":
+         api2.run(req, output);
+         break;
+
+      default:
+         output(true, null);
+   }
 });
 
-server.listen(80);
+server.listen(8080, "localhost");

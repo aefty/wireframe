@@ -1,0 +1,25 @@
+{
+ "get": {
+     "/api2/login": {
+        "sync": [
+      "auth.login",
+      "auth.getData"
+     ]
+     },
+     "/ap2/stats": {
+        "sync": [
+      "api1.getData",
+      "api1.doStats"
+     ],
+        "async": {
+           "taskA": "api1.writeDB",
+           "taskB": "api1.WriteDB2"
+        }
+     },
+     "/api2/*": {
+        "async": {
+           "e": "e.wrongURL"
+        }
+     }
+  }
+}

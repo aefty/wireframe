@@ -1,59 +1,34 @@
- module.exports = function(request) {
-     var d = new Date();
-     var base = d.getTime()
+/**
+ * AUTH - Example Actions
+ * @param  {Object} request Request from HTTP
+ * @return {Null}
+ */
+module.exports = function(request) {
 
-     this.a = function(Callback) {
-         var d = new Date();
-         data = {
-             "aTime": d.getTime() - base
-         };
+   //Sync Methods
+   this.login = function(Callback) {
 
-         setTimeout(function() {
-             Callback(null, data);
-         }, 1000);
+      var data = {};
+      data.login = true;
 
-     };
+      Callback(null, data);
+   };
 
-     this.b = function(data, Callback) {
-         var d = new Date();
-         data.bTime = d.getTime() - base;
-         setTimeout(function() {
-             Callback(null, data);
-         }, 1000);
+   this.getData = function(data, Callback) {
 
-     };
+      data.getData = {
+         "user_id": 1234
+      };
 
-     this.c = function(data, Callback) {
-         var d = new Date();
-         data.cTime = d.getTime() - base;
-         setTimeout(function() {
-             Callback(null, data);
-         }, 1000);
+      Callback(null, data);
+   };
 
+   //Async Methods
+   this.logout = function(Callback) {
 
-     };
+      var data = {};
+      data.logout = true;
 
-     this.taskA = function(Callback) {
-         var d = new Date();
-         var t = {
-             "finish_time": d.getTime() - base
-         }
-
-         Callback(null, t);
-
-     };
-     this.taskB = function(Callback) {
-         var d = new Date();
-         var t = {
-             "finish_time": d.getTime() - base
-         }
-         Callback(null, t);
-
-     };
-
-     this.url_er = function(Callback) {
-
-         Callback(true, "URL not supported : " + request.url);
-
-     };
- };
+      Callback(null, data);
+   };
+};
