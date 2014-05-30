@@ -10,7 +10,7 @@ npm install wireframe
 ```
 
 ## Usage
-1)Require the wireframe modules, 2)Define you workflow and process, 3)Instantiate wireframe and 4)Start doing stuff!
+1) Require the wireframe modules, 2) Define you workflow and process, 3) Instantiate wireframe and 4) Start doing stuff!
 
 ```JavaScript
 // main.js
