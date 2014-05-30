@@ -20,7 +20,6 @@ npm install wireframe
 // mainFile.js
 
 var http = requier("http");
-
 var wireframe = require("wireframe"); // Load Module
 
 var appWorkFlow = require("./workflow.json"); // Load workflow
@@ -32,11 +31,14 @@ var pkgs = {
 	"appError": processError
 };
 
+var api = new wireframe(appWorkFlow,apkgs);
 
 var server = http.createServer(function(req, res) {
 
-var api = new wireframe(appWorkFlow,apkgs);
-
+	api.run(req,function(err,data){
+		// Do something
+	});
+	
 });
 
 server.listen(8080, "localhost");
