@@ -1,0 +1,29 @@
+ {
+  "get": {
+		"/test/test": {
+			"waterfall": [
+        "api.a",
+        "api.b",
+        "api.c"
+      ],
+			"parallel": {}
+		},
+		"/test/other": {
+			"waterfall": [
+        "api.a",
+        "api.b",
+        "api.c"
+      ],
+			"parallel": {
+				"taskA": "api.taskA",
+				"taskB": "api.taskB"
+			}
+		},
+		"*": {
+			"waterfall": [],
+			"parallel": {
+				"n": "errors.url_er"
+			}
+		}
+	}
+}

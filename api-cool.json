@@ -1,5 +1,5 @@
  {
-  "GET": {
+  "get": {
 		"/test/test": {
 			"waterfall": [
         "api.a",
