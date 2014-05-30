@@ -17,33 +17,119 @@ npm install wireframe
 
 
 ```JavaScript
-// mainFile.js
+// main.js
 
 var http = requier("http");
 var wireframe = require("wireframe"); // Load Module
 
-var appWorkFlow = require("./workflow.json"); // Load workflow
-var processReq = require("./processReq"); // Load process
-var processError = require("./processError"); // Load process
+var wf = require("./workflow.json"); // Load workflow
+var procAPI = require("./processReq"); // Load process
+var procErr = require("./processError"); // Load process
 
 var pkgs = {
-	"appReq": processReq,
-	"appError": processError
+	"app": procAPI,
+	"error": procErr
 };
-
-var api = new wireframe(appWorkFlow,apkgs);
+var api = new wireframe(wf,pkgs);
 
 var server = http.createServer(function(req, res) {
-
 	api.run(req,function(err,data){
 		// Do something
 	});
-	
 });
 
 server.listen(8080, "localhost");
+```
+
+```JavaScript
+// processReq.js
+module.exports = function(request) {
+
+   //Sync Methods
+   
+   this.getData = function(Callback) {
+   	// Do stuff... 
+   	Callback(null, data);
+   };
+      this.doStats = function(data,Callback) {
+   	// Do stuff... 
+   	Callback(null, data);
+   };
+   
+     // more ...
+   
+   //Async Methods
+   this.writeDB = function(Callback) {
+   	// Do stuff... 
+   	Callback(null, data);
+   };
+      this.writeDB2 = function(Callback) {
+   	// Do stuff... 
+   	Callback(null, data);
+   };
+   
+   // more ...
+};
 
 
+// processError.js
+module.exports = function(request) {
+
+   //Sync Methods
+
+   //Async Methods
+   this.wrongMethod = function(Callback) {
+   	// Do stuff... 
+   	Callback(null, data);
+   };
+};
+
+
+
+```
+
+
+```JSON
+// workflow.json
+
+{
+  "GET": {
+    "/api/stats": {
+      "sync": [
+        "procAPI.getData",
+        "procAPI.doStats"
+      ],
+      "async": {
+        "taskA": "procAPI.writeDB",
+        "taskB": "procAPI.WriteDB2"
+      }
+    },
+    "*": {
+      "async": {
+        "e": "procErr.wrongURL"
+      }
+    }
+  },
+  "POST": {
+    "/api2/login": {
+      "sync": [
+        "procAPI.login",
+        "procAPI.getData"
+      ]
+    },
+    "/api/logout": {
+      "async": {
+        "taskA": "procAPI.writeDB",
+        "taskB": "procAPI.WriteDB2"
+      }
+    },
+    "*": {
+      "async": {
+        "e": "procErr.wrongURL"
+      }
+    }
+  }
+}
 ```
 
 ## License
