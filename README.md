@@ -99,7 +99,7 @@ The workflow template is defined as Http Methods -> URL -> (sync/async) -> Funct
     }
   },
   "POST": {
-    "/api2/login": {
+    "/api/login": {
       "sync": [
         "procAPI.login",
         "procAPI.getData"
