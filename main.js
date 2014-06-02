@@ -1,49 +1,22 @@
-// Network Startup
-var http = require("http");
-var urlglob = require("urlglob");
+var http = require('http');
+var wireframe = require('./lib/wireframe'); //1. Load Module
 
-
-var api = require("./process-api");
-var auth = require("./process-auth");
-var e = require("./process-e");
-
-var wireframe = require("./lib/wireframe");
-
-var api1_structrue = require("./structure-api1.json");
-var api2_structrue = require("./structure-api2.json");
-
+var wf = require('./workflow.json'); //2.Load workflow
 var pkgs = {
-   "api": api,
-   "auth": auth,
-   "e": e
+   'app': require('./processReq'), //2.Load process
+   'error': require('./processError')
 };
 
-api1 = new wireframe(api1_structrue, pkgs);
-api2 = new wireframe(api2_structrue, pkgs);
-
+var api = new wireframe(wf, pkgs); // 3. Instantiate Wireframe
 
 var server = http.createServer(function(req, res) {
 
-   var output = function(err, data) {
-      console.log(req.url);
-      console.log("error: " + err);
-      console.log("response: " + JSON.stringify(data, undefined, 2));
-      res.end("done");
-   };
-
-   switch (true) {
-
-      case urlglob("/api1/*", req.url):
-         api1.run(req, output);
-         break;
-
-      case urlglob("/api2/*", req.url):
-         api2.run(req, output);
-         break;
-
-      default:
-         output(true, null);
-   }
+   api.run(req, function(err, data) { // 4. Starting doing stuff!
+      // Do something
+      console.log('error:' + err);
+      console.log('data :' + JSON.stringify(data, undefined, 2));
+      res.end('done');
+   });
 });
 
-server.listen(8080, "localhost");
+server.listen(8080, 'localhost');

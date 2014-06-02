@@ -1,0 +1,38 @@
+{
+  "GET": {
+    "/api/stats": {
+      "sync": [
+        "app.getData",
+        "app.doStats"
+      ],
+      "async": {
+        "taskA": "app.writeDB"
+      }
+    },
+    "*": {
+      "async": {
+        "e": "error.wrongURL"
+      }
+    }
+  },
+  "POST": {
+    "/api/login": {
+      "sync": [
+        "app.login",
+        "app.getUser"
+      ]
+    },
+    "*": {
+      "async": {
+        "e": "error.wrongURL"
+      }
+    }
+  },
+  "DELETE": {
+    "*": {
+      "async": {
+        "e": "error.wrongMethod"
+      }
+    }
+  }
+}
