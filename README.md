@@ -6,7 +6,7 @@ Response =  Async(Request){ Sync(Request){[F(a),F(b)..]} + Async(Request){[F(a),
 
 ## Install
 
-__ Isntall From Node Package Manager (npm) __
+__Node Package Manager (npm)__
 ```Shell
 npm install wireframe
 ```
