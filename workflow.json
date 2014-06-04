@@ -5,14 +5,15 @@
         "app.getData",
         "app.doStats"
       ],
-      "async": {
-        "taskA": "app.writeDB"
-      }
+      "async": [
+        "app.writeDB",
+        "app.getData"
+      ]
     },
     "*": {
-      "async": {
-        "e": "error.wrongURL"
-      }
+      "sync": [
+        "error.wrongURL"
+      ]
     }
   },
   "POST": {
@@ -23,16 +24,16 @@
       ]
     },
     "*": {
-      "async": {
-        "e": "error.wrongURL"
-      }
+      "async": [
+        "error.wrongURL"
+      ]
     }
   },
   "DELETE": {
     "*": {
-      "async": {
-        "e": "error.wrongMethod"
-      }
+      "async": [
+        "error.wrongMethod"
+      ]
     }
   }
 }
