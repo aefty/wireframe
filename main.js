@@ -3,8 +3,9 @@ var wireframe = require('./lib/wireframe'); //1. Load Module
 
 var wf = require('./workflow.json'); //2.Load workflow
 var pkgs = {
-    'app': require('./processReq'), //2.Load process
-    'error': require('./processError')
+    'fork': require('./procFork'), //2.Load process
+    'merg': require('./procMerg'), //2.Load process
+    'error': require('./procError') //2.Load process
 };
 
 var api = new wireframe(wf, pkgs); // 3. Instantiate Wireframe

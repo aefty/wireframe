@@ -3,29 +3,27 @@
  * @param  {Object} request Http request objects
  * @return {false}
  */
-module.exports = function(request) {
+module.exports = function(request, data) {
 
-    var data = {};
     var d = 1;
 
     //Sync Methods
     this.login = function(callback) {
         // Do stuff...
-        data.login = "Done app.login";
         d++;
         callback(false, d);
     };
 
     this.getData = function(callback) {
         // Do stuff...
-        data.getData = "Done app.login";
-        callback(false, "getData");
+        //data.getData = "Done app.login";
+        callback(false, "mergin");
     };
 
     this.getUser = function(callback) {
         // Do stuff...
-        data.getUser = "Done app.getUser";
-        callback(false, "getUser");
+
+        callback(false, data);
     };
 
     this.doStats = function(callback) {
@@ -42,8 +40,8 @@ module.exports = function(request) {
     //Async Methods
     this.writeDB = function(callback) {
         // Do stuff...
-        var data = "Done app.writeDB";
-        callback(false, "writeDB");
+
+        callback(false, "merging, writeDB");
     };
 
 

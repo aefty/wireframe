@@ -2,12 +2,16 @@
   "GET": {
     "/api/stats": {
       "sync": [
-        "app.getData",
-        "app.doStats"
+        "fork.getData",
+        "fork.doStats"
       ],
       "async": [
-        "app.writeDB",
-        "app.getData"
+        "fork.writeDB",
+        "fork.getData"
+    ],
+      "merg": [
+        "merg.writeDB",
+        "merg.getUser"
       ]
     },
     "*": {
@@ -19,8 +23,8 @@
   "POST": {
     "/api/login": {
       "sync": [
-        "app.login",
-        "app.getUser"
+        "fork.login",
+        "fork.getUser"
       ]
     },
     "*": {
