@@ -1,5 +1,5 @@
 # Wireframe
-Wireframe is a thin wrapper that routes your requests and processes them based on a JSON template. This framework minimizes code duplication and allows a flexable workflow that asynchronolsy processes a set of synchronouse and asyncrnouse tasks (Fork), upon completion the results of the requests is run asynchronosly through another set of tasks (Merg).
+Wireframe is a thin wrapper that routes your requests and processes them based on a JSON template. This framework minimizes code duplication and allows a flexible workflow that asynchronously processes a set of synchronous and asynchronous tasks (Fork), upon completion the results of the requests is run asynchronously through another set of tasks (Merg).
 ```
 Response = Sync(request){ fork(request){ Sync(){Tn...} + Async(){Tn...} } , merg(request,data){ Async(){Tn...} }}
 
