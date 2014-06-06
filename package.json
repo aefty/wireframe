@@ -26,5 +26,8 @@
   "bugs": {
     "url": "https://github.com/aefty/wireframe/issues"
   },
-  "homepage": "https://github.com/aefty/wireframe"
+  "homepage": "https://github.com/aefty/wireframe",
+  "engines": {
+    "node": "*"
+  }
 }
