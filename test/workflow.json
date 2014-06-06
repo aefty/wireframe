@@ -2,16 +2,16 @@
   "GET": {
     "/api/stats": {
       "sync": [
-        "fork.getData",
-        "fork.doStats"
+        "proc.one",
+        "proc.two"
       ],
       "async": [
-        "fork.writeDB",
-        "fork.getData"
+        "proc.three",
+        "proc.four"
     ],
       "merg": [
-        "merg.writeDB",
-        "merg.getUser"
+        "merg.one",
+        "merg.two"
       ]
     },
     "*": {
@@ -23,17 +23,17 @@
   "POST": {
     "/api/login": {
       "sync": [
-        "fork.login",
-        "fork.getUser"
+        "proc.one",
+        "proc.five"
       ]
     },
     "*": {
       "async": [
-        "error.wrongURL"
+        "e.wrongURL"
       ]
     }
   },
-  "DELETE": {
+  "*": {
     "*": {
       "async": [
         "error.wrongMethod"
