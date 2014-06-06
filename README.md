@@ -1,89 +1,142 @@
 # Wireframe
 Wireframe is a thin wrapper that routes your requests and processes them based on a JSON template. This framework minimizes code duplication and allows a flexable workflow that asynchronolsy processes a set of synchronouse and asyncrnouse tasks (Fork), upon completion the results of the requests is run asynchronosly through another set of tasks (Merg).
 ```
-Response = Async( Async(Request){ Sync(Request){[F(a),F(b)..]} + Async(Request){[F(a),F(b)...]} } ){ Async(Request){ Sync(Request){[F(a),F(b)..]} + Async(Request){[F(a),F(b)...]} }}
-
-
-	  	|---sync(request)--|
-	  	|  				|
-	  	|  				|   |--async(request,sync,async,)--|
-Request-->|  				|-->|--async(request,sync,async,)--|---> Response
-	  	|  			    |   |--async(request,sync,async,)--|
-	  	|--async(request)--|
-	  	|--async(requets)--|
-	  	|--async(request)--|
+Response = Sync(request){ fork(request){ Sync(){Tn...} + Async(){Tn...} } , merg(request,data){ Async(){Tn...} }}
 
 ```
 
 ## Install
 
-__Node Package Manager (npm)__
+Get package via npm
 ```Shell
 npm install wireframe
 ```
 
 ## Usage
-1) Require the wireframe modules, 2) Define you workflow and process, 3) Instantiate wireframe and 4) Start doing stuff!
+1) Require the wireframe modules, 2) Load you workflow and process, 3) Instantiate wireframe and 4) Start doing stuff!
 
 ```JavaScript
 // main.js
 
-var http = requier("http");
-var wireframe = require("wireframe"); //1. Load Module
+var http = require('http');
+var wireframe = require('wireframe'); //1. Load Module
 
-var wf = require("./workflow.json"); //2.Load workflow
-var procAPI = require("./processReq"); //2.Load process
-var procErr = require("./processError"); //2.Load process
-
+var wf = require('./workflow.json'); //2.Load workflow
 var pkgs = {
-	"app": procAPI,
-	"error": procErr
+	'proc': require('./process'), //2.Load process
+	'merg': require('./merg'), //2.Load process
+	'e': require('./error') //2.Load process
 };
-var api = new wireframe(wf,pkgs); // 3. Instantiate Wireframe
+
+var api = new wireframe(wf, pkgs); // 3. Instantiate Wireframe
 
 var server = http.createServer(function(req, res) {
 
-	api.run(req,function(err,data){ // 4. Starting doing stuff!
+	api.run(req, function(err, data) { // 4. Starting doing stuff!
 		// Do something
+		console.log('error:' + err);
+		console.log('data :' + JSON.stringify(data, undefined, 2));
+		res.end('done');
 	});
 });
 
-server.listen(8080, "localhost");
+server.listen(8080, 'localhost');
+
 ```
 
-The process can be written in any number of modules and Required in the main file. The request paramter being passed in will point to the http request object. Wireframe is based on the async libaray and uses "waterfall" for sync and "parallel" for async.
+The process can be written in any number of modules and 'require()' in the main file. The request parameter being passed in will point to the http request object. Wireframe is based on the async library and uses "serial" and "parallel".
 
 ```JavaScript
-// processReq.js
+// process.js
+
 module.exports = function(request) {
+	var d = 1;
+	var start = new Date();
 
-   //Sync Methods
-   this.getData = function(Callback) {
-   	// Do stuff...
-   	Callback(null, data);
-   };
-      this.doStats = function(data,Callback) {
-   	// Do stuff...
-   	Callback(null, data);
-   };
+	this.one = function(callback) {
+		// Do stuff...
+		var now = new Date();
+		var a = {
+			num: d + 1,
+			time: now.getTime() - start.getTime()
+		};
 
-   //Async Methods
-   this.writeDB = function(Callback) {
-   	// Do stuff...
-   	Callback(null, data);
-   };
+		setTimeout(function() {
+			callback(false, a);
+		}, 1000);
+	};
+
+	this.two = function(callback) {
+		// Do stuff...
+		var now = new Date();
+		var a = {
+			num: d + 2,
+			time: now.getTime() - start.getTime()
+		};
+
+		setTimeout(function() {
+			callback(false, a);
+		}, 100);
+	};
+
+	// ... more see test
+
 };
+
 ```
 
 ```JavaScript
+// merg.js
 
-// processError.js
+module.exports = function(request,data) {
+
+	this.one = function(callback) {
+		// Do stuff...
+		var now = new Date();
+		var a = {
+			num: data.sync.proc_one.num + 1,
+			time: now.getTime() - start.getTime()
+		};
+
+		setTimeout(function() {
+			callback(false, a);
+		}, 100);
+	};
+
+	this.two = function(callback) {
+		// Do stuff...
+		var now = new Date();
+		var a = {
+			num: data.sync.proc_two.num + 2,
+			time: now.getTime() - start.getTime()
+		};
+
+		setTimeout(function() {
+			callback(false, a);
+		}, 200);
+	};
+
+	// ... more see test
+
+};
+
+```
+
+```JavaScript
+// error.js
+
 module.exports = function(request) {
-   //Async Methods
-   this.wrongURL = function(Callback) {
-   	// Do stuff...
-   	Callback(null, data);
-   };
+	this.wrongURL = function(callback) {
+		// Do stuff...
+		callback(true, request.url + " : Wrong URL is not supported!");
+	};
+
+	this.wrongMethod = function(callback) {
+		// Do stuff...
+		callback(true, request.method + " : is not supported!");
+	};
+
+	// ... more see test
 };
 
 
@@ -95,43 +148,36 @@ The workflow template is defined as Http Methods -> URL -> (sync/async) -> Funct
 ```JSON
 // workflow.json
 {
-  "GET": {
-    "/api/stats": {
-      "sync": [
-        "procAPI.getData",
-        "procAPI.doStats"
-      ],
-      "async": {
-        "taskA": "procAPI.writeDB"
-      }
-    },
-    "*": {
-      "async": {
-        "e": "procErr.wrongURL"
-      }
-    }
-  },
-  "POST": {
-    "/api/login": {
-      "sync": [
-        "procAPI.login",
-        "procAPI.getData"
-      ]
-    },
-    "*": {
-      "async": {
-        "e": "procErr.wrongURL"
-      }
-    }
-  },
-  "*": {
-    "*": {
-      "async": {
-        "e": "procErr.wrongURL"
-      }
-    }
-  }
+"GET": {
+	"/api/stats": {
+	"sync": [
+		"proc.one",
+		"proc.two"
+	],
+	"async": [
+		"proc.three",
+		"proc.four"
+	],
+	"merg": [
+		"merg.one",
+		"merg.two"
+	]
+	},
+	"*": {
+	"sync": [
+		"error.wrongURL"
+	]
+	}
+},
+"*": {
+	"*": {
+	"async": [
+		"error.wrongMethod"
+	]
+	}
 }
+}
+
 ```
 
 

@@ -14,8 +14,6 @@ module.exports = function(request, data) {
             time: now.getTime() - start.getTime()
         };
 
-        //console.log('merg.one');
-
         setTimeout(function() {
             callback(false, a);
         }, 100);
@@ -29,8 +27,6 @@ module.exports = function(request, data) {
             time: now.getTime() - start.getTime()
         };
 
-        //console.log('merg.two');
-
         setTimeout(function() {
             callback(false, a);
         }, 200);
@@ -43,7 +39,6 @@ module.exports = function(request, data) {
             num: data.sync.proc_one.num + 3,
             time: now.getTime() - start.getTime()
         };
-        console.log('merg.three');
 
         setTimeout(function() {
             callback(false, a);
@@ -57,7 +52,6 @@ module.exports = function(request, data) {
             num: data.sync.proc_one.num + 4,
             time: now.getTime() - start.getTime()
         };
-        console.log('merg.four');
 
         setTimeout(function() {
             callback(false, a);
@@ -72,8 +66,6 @@ module.exports = function(request, data) {
             num: data.sync.proc_one.num + 5,
             time: now.getTime() - start.getTime()
         };
-
-        console.log('merg.five');
 
         setTimeout(function() {
             callback(false, a);

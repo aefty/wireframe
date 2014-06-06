@@ -15,8 +15,6 @@ module.exports = function(request) {
             time: now.getTime() - start.getTime()
         };
 
-        //console.log('proc.one');
-
         setTimeout(function() {
             callback(false, a);
         }, 1000);
@@ -29,8 +27,6 @@ module.exports = function(request) {
             num: d + 2,
             time: now.getTime() - start.getTime()
         };
-
-        //console.log('proc.two');
 
         setTimeout(function() {
             callback(false, a);
@@ -45,8 +41,6 @@ module.exports = function(request) {
             time: now.getTime() - start.getTime()
         };
 
-        //console.log('proc.three');
-
         setTimeout(function() {
             callback(false, a);
         }, 100);
@@ -60,8 +54,6 @@ module.exports = function(request) {
             time: now.getTime() - start.getTime()
         };
 
-        //console.log('proc.four');
-
         setTimeout(function() {
             callback(false, a);
         }, 300);
@@ -74,8 +66,6 @@ module.exports = function(request) {
             num: d + 5,
             time: now.getTime() - start.getTime()
         };
-
-        //console.log('proc.five');
 
         setTimeout(function() {
             callback(false, a);
