@@ -1,7 +1,18 @@
 # Wireframe
-Wireframe is a thin wrapper that routes your requests and processes them based on a JSON template. This framework minimizes code duplication and allows a flexable workflow that asynchronolsy processes a set of synchronouse and asyncrnouse tasks. 
+Wireframe is a thin wrapper that routes your requests and processes them based on a JSON template. This framework minimizes code duplication and allows a flexable workflow that asynchronolsy processes a set of synchronouse and asyncrnouse tasks (Fork), upon completion the results of the requests is run asynchronosly through another set of tasks (Merg).
 ```
-Response =  Async(Request){ Sync(Request){[F(a),F(b)..]} + Async(Request){[F(a),F(b)...]} }
+Response = Async( Async(Request){ Sync(Request){[F(a),F(b)..]} + Async(Request){[F(a),F(b)...]} } ){ Async(Request){ Sync(Request){[F(a),F(b)..]} + Async(Request){[F(a),F(b)...]} }}
+
+
+	  	|---sync(request)--|
+	  	|  				|
+	  	|  				|   |--async(request,sync,async,)--|
+Request-->|  				|-->|--async(request,sync,async,)--|---> Response
+	  	|  			    |   |--async(request,sync,async,)--|
+	  	|--async(request)--|
+	  	|--async(requets)--|
+	  	|--async(request)--|
+
 ```
 
 ## Install
@@ -24,14 +35,14 @@ var wf = require("./workflow.json"); //2.Load workflow
 var procAPI = require("./processReq"); //2.Load process
 var procErr = require("./processError"); //2.Load process
 
-var pkgs = {           
+var pkgs = {
 	"app": procAPI,
 	"error": procErr
 };
 var api = new wireframe(wf,pkgs); // 3. Instantiate Wireframe
 
 var server = http.createServer(function(req, res) {
-	
+
 	api.run(req,function(err,data){ // 4. Starting doing stuff!
 		// Do something
 	});
@@ -48,17 +59,17 @@ module.exports = function(request) {
 
    //Sync Methods
    this.getData = function(Callback) {
-   	// Do stuff... 
+   	// Do stuff...
    	Callback(null, data);
    };
       this.doStats = function(data,Callback) {
-   	// Do stuff... 
+   	// Do stuff...
    	Callback(null, data);
    };
-   
+
    //Async Methods
    this.writeDB = function(Callback) {
-   	// Do stuff... 
+   	// Do stuff...
    	Callback(null, data);
    };
 };
@@ -70,7 +81,7 @@ module.exports = function(request) {
 module.exports = function(request) {
    //Async Methods
    this.wrongURL = function(Callback) {
-   	// Do stuff... 
+   	// Do stuff...
    	Callback(null, data);
    };
 };
