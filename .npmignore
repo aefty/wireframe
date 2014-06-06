@@ -2,4 +2,4 @@
 /test
 .npmignore
 .gitmodules
-.log
+*.log
