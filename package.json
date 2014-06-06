@@ -1,0 +1,30 @@
+{
+  "name": "wireframe",
+  "version": "1.0.0",
+  "description": "Node js framework - request routing & control flow via JSON",
+  "main": "./lib/wireframe.js",
+  "dependencies": {
+    "async": "^0.9.0",
+    "urlglob": "^0.1.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aefty/wireframe.git"
+  },
+  "keywords": [
+    "restful",
+    "routing",
+    "framework",
+    "control-flow"
+  ],
+  "author": "Aryan Eftekhari <aryan.eftekhari@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/aefty/wireframe/issues"
+  },
+  "homepage": "https://github.com/aefty/wireframe"
+}
