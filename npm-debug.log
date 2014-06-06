@@ -1,0 +1,111 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'publish' ]
+2 info using npm@1.4.9
+3 info using node@v0.10.28
+4 verbose publish [ '.' ]
+5 verbose cache add [ '.', null ]
+6 verbose cache add name=undefined spec="." args=[".",null]
+7 verbose parsed url { protocol: null,
+7 verbose parsed url   slashes: null,
+7 verbose parsed url   auth: null,
+7 verbose parsed url   host: null,
+7 verbose parsed url   port: null,
+7 verbose parsed url   hostname: null,
+7 verbose parsed url   hash: null,
+7 verbose parsed url   search: null,
+7 verbose parsed url   query: null,
+7 verbose parsed url   pathname: '.',
+7 verbose parsed url   path: '.',
+7 verbose parsed url   href: '.' }
+8 silly lockFile 3a52ce78- .
+9 verbose lock . /Users/aryaneftekhari/.npm/3a52ce78-.lock
+10 verbose tar pack [ '/Users/aryaneftekhari/tmp/npm-14199-Be6ydVRX/1402038657566-0.183014772599563/tmp.tgz',
+10 verbose tar pack   '.' ]
+11 verbose tarball /Users/aryaneftekhari/tmp/npm-14199-Be6ydVRX/1402038657566-0.183014772599563/tmp.tgz
+12 verbose folder .
+13 info prepublish wireframe@1.0.0
+14 silly lockFile 1f1177db-tar tar://.
+15 verbose lock tar://. /Users/aryaneftekhari/.npm/1f1177db-tar.lock
+16 silly lockFile bf070685-657566-0-183014772599563-tmp-tgz tar:///Users/aryaneftekhari/tmp/npm-14199-Be6ydVRX/1402038657566-0.183014772599563/tmp.tgz
+17 verbose lock tar:///Users/aryaneftekhari/tmp/npm-14199-Be6ydVRX/1402038657566-0.183014772599563/tmp.tgz /Users/aryaneftekhari/.npm/bf070685-657566-0-183014772599563-tmp-tgz.lock
+18 silly lockFile 1f1177db-tar tar://.
+19 silly lockFile 1f1177db-tar tar://.
+20 silly lockFile bf070685-657566-0-183014772599563-tmp-tgz tar:///Users/aryaneftekhari/tmp/npm-14199-Be6ydVRX/1402038657566-0.183014772599563/tmp.tgz
+21 silly lockFile bf070685-657566-0-183014772599563-tmp-tgz tar:///Users/aryaneftekhari/tmp/npm-14199-Be6ydVRX/1402038657566-0.183014772599563/tmp.tgz
+22 verbose tar unpack /Users/aryaneftekhari/tmp/npm-14199-Be6ydVRX/1402038657566-0.183014772599563/tmp.tgz
+23 silly lockFile 49e2de1b-hari-npm-wireframe-1-0-0-package tar:///Users/aryaneftekhari/.npm/wireframe/1.0.0/package
+24 verbose lock tar:///Users/aryaneftekhari/.npm/wireframe/1.0.0/package /Users/aryaneftekhari/.npm/49e2de1b-hari-npm-wireframe-1-0-0-package.lock
+25 silly lockFile bf070685-657566-0-183014772599563-tmp-tgz tar:///Users/aryaneftekhari/tmp/npm-14199-Be6ydVRX/1402038657566-0.183014772599563/tmp.tgz
+26 verbose lock tar:///Users/aryaneftekhari/tmp/npm-14199-Be6ydVRX/1402038657566-0.183014772599563/tmp.tgz /Users/aryaneftekhari/.npm/bf070685-657566-0-183014772599563-tmp-tgz.lock
+27 silly gunzTarPerm modes [ '755', '644' ]
+28 silly gunzTarPerm extractEntry package.json
+29 silly gunzTarPerm extractEntry README.md
+30 silly gunzTarPerm extractEntry LICENSE
+31 silly gunzTarPerm extractEntry lib/wireframe.js
+32 silly lockFile 49e2de1b-hari-npm-wireframe-1-0-0-package tar:///Users/aryaneftekhari/.npm/wireframe/1.0.0/package
+33 silly lockFile 49e2de1b-hari-npm-wireframe-1-0-0-package tar:///Users/aryaneftekhari/.npm/wireframe/1.0.0/package
+34 silly lockFile bf070685-657566-0-183014772599563-tmp-tgz tar:///Users/aryaneftekhari/tmp/npm-14199-Be6ydVRX/1402038657566-0.183014772599563/tmp.tgz
+35 silly lockFile bf070685-657566-0-183014772599563-tmp-tgz tar:///Users/aryaneftekhari/tmp/npm-14199-Be6ydVRX/1402038657566-0.183014772599563/tmp.tgz
+36 silly lockFile 3a52ce78- .
+37 silly lockFile 3a52ce78- .
+38 silly publish { name: 'wireframe',
+38 silly publish   version: '1.0.0',
+38 silly publish   description: 'Node js framework - request routing & control flow via JSON',
+38 silly publish   main: './lib/wireframe.js',
+38 silly publish   dependencies: { async: '^0.9.0', urlglob: '^0.1.0' },
+38 silly publish   devDependencies: {},
+38 silly publish   scripts: { test: 'echo "Error: no test specified" && exit 1' },
+38 silly publish   repository: { type: 'git', url: 'https://github.com/aefty/wireframe.git' },
+38 silly publish   keywords: [ 'restful', 'routing', 'framework', 'control-flow' ],
+38 silly publish   author: { name: 'Aryan Eftekhari', email: 'aryan.eftekhari@gmail.com' },
+38 silly publish   license: 'MIT',
+38 silly publish   bugs: { url: 'https://github.com/aefty/wireframe/issues' },
+38 silly publish   homepage: 'https://github.com/aefty/wireframe',
+38 silly publish   engines: { node: '*' },
+38 silly publish   readme: '# Wireframe\nWireframe is a thin wrapper that routes your requests and processes them based on a JSON template. This framework minimizes code duplication and allows a flexable workflow that asynchronolsy processes a set of synchronouse and asyncrnouse tasks (Fork), upon completion the results of the requests is run asynchronosly through another set of tasks (Merg).\n```\nResponse = Sync(request){ fork(request){ Sync(){Tn...} + Async(){Tn...} } , merg(request,data){ Async(){Tn...} }}\n\n```\n\n## Install\n\nGet package via npm\n```Shell\nnpm install wireframe\n```\n\n## Usage\n1) Require the wireframe modules, 2) Load you workflow and process, 3) Instantiate wireframe and 4) Start doing stuff!\n\n```JavaScript\n// main.js\n\nvar http = require(\'http\');\nvar wireframe = require(\'wireframe\'); //1. Load Module\n\nvar wf = require(\'./workflow.json\'); //2.Load workflow\nvar pkgs = {\n\t\'proc\': require(\'./process\'), //2.Load process\n\t\'merg\': require(\'./merg\'), //2.Load process\n\t\'e\': require(\'./error\') //2.Load process\n};\n\nvar api = new wireframe(wf, pkgs); // 3. Instantiate Wireframe\n\nvar server = http.createServer(function(req, res) {\n\n\tapi.run(req, function(err, data) { // 4. Starting doing stuff!\n\t\t// Do something\n\t\tconsole.log(\'error:\' + err);\n\t\tconsole.log(\'data :\' + JSON.stringify(data, undefined, 2));\n\t\tres.end(\'done\');\n\t});\n});\n\nserver.listen(8080, \'localhost\');\n\n```\n\nThe process can be written in any number of modules and \'require()\' in the main file. The request parameter being passed in will point to the http request object. Wireframe is based on the async library and uses "serial" and "parallel".\n\n```JavaScript\n// process.js\n\nmodule.exports = function(request) {\n\tvar d = 1;\n\tvar start = new Date();\n\n\tthis.one = function(callback) {\n\t\t// Do stuff...\n\t\tvar now = new Date();\n\t\tvar a = {\n\t\t\tnum: d + 1,\n\t\t\ttime: now.getTime() - start.getTime()\n\t\t};\n\n\t\tsetTimeout(function() {\n\t\t\tcallback(false, a);\n\t\t}, 1000);\n\t};\n\n\tthis.two = function(callback) {\n\t\t// Do stuff...\n\t\tvar now = new Date();\n\t\tvar a = {\n\t\t\tnum: d + 2,\n\t\t\ttime: now.getTime() - start.getTime()\n\t\t};\n\n\t\tsetTimeout(function() {\n\t\t\tcallback(false, a);\n\t\t}, 100);\n\t};\n\n\t// ... more see test\n\n};\n\n```\n\n```JavaScript\n// merg.js\n\nmodule.exports = function(request,data) {\n\n\tthis.one = function(callback) {\n\t\t// Do stuff...\n\t\tvar now = new Date();\n\t\tvar a = {\n\t\t\tnum: data.sync.proc_one.num + 1,\n\t\t\ttime: now.getTime() - start.getTime()\n\t\t};\n\n\t\tsetTimeout(function() {\n\t\t\tcallback(false, a);\n\t\t}, 100);\n\t};\n\n\tthis.two = function(callback) {\n\t\t// Do stuff...\n\t\tvar now = new Date();\n\t\tvar a = {\n\t\t\tnum: data.sync.proc_two.num + 2,\n\t\t\ttime: now.getTime() - start.getTime()\n\t\t};\n\n\t\tsetTimeout(function() {\n\t\t\tcallback(false, a);\n\t\t}, 200);\n\t};\n\n\t// ... more see test\n\n};\n\n```\n\n```JavaScript\n// error.js\n\nmodule.exports = function(request) {\n\tthis.wrongURL = function(callback) {\n\t\t// Do stuff...\n\t\tcallback(true, request.url + " : Wrong URL is not supported!");\n\t};\n\n\tthis.wrongMethod = function(callback) {\n\t\t// Do stuff...\n\t\tcallback(true, request.method + " : is not supported!");\n\t};\n\n\t// ... more see test\n};\n\n\n\n```\n\nThe workflow template is defined as Http Methods -> URL -> fork( sync(tasks) , async(tasks) ) -> merg( tasks ).\n\n```JSON\n// workflow.json\n{\n  "GET": {\n    "/api/stats": {\n      "sync": [\n        "proc.one",\n        "proc.two"\n      ],\n      "async": [\n        "proc.three",\n        "proc.four"\n      ],\n      "merg": [\n        "merg.one",\n        "merg.two"\n      ]\n    },\n    "*": {\n      "sync": [\n        "error.wrongURL"\n      ]\n    }\n  },\n  "*": {\n    "*": {\n      "async": [\n        "error.wrongMethod"\n      ]\n    }\n  }\n}\n\n```\n\n\n\n## License\nThe MIT License (MIT)\nCopyright (c) 2014 Aryan Eftekhari\n',
+38 silly publish   readmeFilename: 'README.md',
+38 silly publish   _id: 'wireframe@1.0.0',
+38 silly publish   _shasum: 'ac5ecc06dde3fe938f44cd5a951b8336051a207b',
+38 silly publish   _from: '.' }
+39 verbose url raw wireframe
+40 verbose url resolving [ 'https://registry.npmjs.org/', './wireframe' ]
+41 verbose url resolved https://registry.npmjs.org/wireframe
+42 info trying registry request attempt 1 at 00:10:57
+43 http PUT https://registry.npmjs.org/wireframe
+44 http 403 https://registry.npmjs.org/wireframe
+45 verbose headers { date: 'Fri, 06 Jun 2014 07:10:58 GMT',
+45 verbose headers   server: 'CouchDB/1.5.0 (Erlang OTP/R14B04)',
+45 verbose headers   'content-type': 'application/json',
+45 verbose headers   'cache-control': 'max-age=1',
+45 verbose headers   'content-length': '8094',
+45 verbose headers   'accept-ranges': 'bytes',
+45 verbose headers   via: '1.1 varnish',
+45 verbose headers   'x-served-by': 'cache-lax1426-LAX',
+45 verbose headers   'x-cache': 'MISS',
+45 verbose headers   'x-cache-hits': '0',
+45 verbose headers   'x-timer': 'S1402038657.975284,VS0,VE196',
+45 verbose headers   'keep-alive': 'timeout=10, max=50',
+45 verbose headers   connection: 'Keep-Alive' }
+46 error publish Failed PUT 403
+47 error Error: forbidden cannot modify pre-existing version: 1.0.0
+47 error old={"name":"wireframe","version":"1.0.0","description":"Node js framework - request routing & control flow via JSON","main":"./lib/wireframe.js","dependencies":{"async":"^0.9.0","urlglob":"^0.1.0"},"devDependencies":{},"scripts":{"test":"echo \"Error: no test specified\" && exit 1"},"repository":{"type":"git","url":"https://github.com/aefty/wireframe.git"},"keywords":["restful","routing","framework","control-flow"],"author":{"name":"Aryan Eftekhari","email":"aryan.eftekhari@gmail.com"},"license":"MIT","bugs":{"url":"https://github.com/aefty/wireframe/issues"},"homepage":"https://github.com/aefty/wireframe","engines":{"node":"*"},"_id":"wireframe@1.0.0","_shasum":"5cb23a66a4ba20d4277e1b86a6338b2640685473","_from":".","_npmVersion":"1.4.9","_npmUser":{"name":"aefty","email":"aryan.eftekhari@gmail.com"},"maintainers":[{"name":"aefty","email":"aryan.eftekhari@gmail.com"}],"dist":{"shasum":"5cb23a66a4ba20d4277e1b86a6338b2640685473","tarball":"http://registry.npmjs.org/wireframe/-/wireframe-1.0.0.tgz"}}
+47 error new={"name":"wireframe","version":"1.0.0","description":"Node js framework - request routing & control flow via JSON","main":"./lib/wireframe.js","dependencies":{"async":"^0.9.0","urlglob":"^0.1.0"},"devDependencies":{},"scripts":{"test":"echo \"Error: no test specified\" && exit 1"},"repository":{"type":"git","url":"https://github.com/aefty/wireframe.git"},"keywords":["restful","routing","framework","control-flow"],"author":{"name":"Aryan Eftekhari","email":"aryan.eftekhari@gmail.com"},"license":"MIT","bugs":{"url":"https://github.com/aefty/wireframe/issues"},"homepage":"https://github.com/aefty/wireframe","engines":{"node":"*"},"readme":"# Wireframe\u000aWireframe is a thin wrapper that routes your requests and processes them based on a JSON template. This framework minimizes code duplication and allows a flexable workflow that asynchronolsy processes a set of synchronouse and asyncrnouse tasks (Fork), upon completion the results of the requests is run asynchronosly through another set of tasks (Merg).\u000a```\u000aResponse = Sync(request){ fork(request){ Sync(){Tn...} + Async(){Tn...} } , merg(request,data){ Async(){Tn...} }}\u000a\u000a```\u000a\u000a## Install\u000a\u000aGet package via npm\u000a```Shell\u000anpm install wireframe\u000a```\u000a\u000a## Usage\u000a1) Require the wireframe modules, 2) Load you workflow and process, 3) Instantiate wireframe and 4) Start doing stuff!\u000a\u000a```JavaScript\u000a// main.js\u000a\u000avar http = require('http');\u000avar wireframe = require('wireframe'); //1. Load Module\u000a\u000avar wf = require('./workflow.json'); //2.Load workflow\u000avar pkgs = {\u000a\u0009'proc': require('./process'), //2.Load process\u000a\u0009'merg': require('./merg'), //2.Load process\u000a\u0009'e': require('./error') //2.Load process\u000a};\u000a\u000avar api = new wireframe(wf, pkgs); // 3. Instantiate Wireframe\u000a\u000avar server = http.createServer(function(req, res) {\u000a\u000a\u0009api.run(req, function(err, data) { // 4. Starting doing stuff!\u000a\u0009\u0009// Do something\u000a\u0009\u0009console.log('error:' + err);\u000a\u0009\u0009console.log('data :' + JSON.stringify(data, undefined, 2));\u000a\u0009\u0009res.end('done');\u000a\u0009});\u000a});\u000a\u000aserver.listen(8080, 'localhost');\u000a\u000a```\u000a\u000aThe process can be written in any number of modules and 'require()' in the main file. The request parameter being passed in will point to the http request object. Wireframe is based on the async library and uses \"serial\" and \"parallel\".\u000a\u000a```JavaScript\u000a// process.js\u000a\u000amodule.exports = function(request) {\u000a\u0009var d = 1;\u000a\u0009var start = new Date();\u000a\u000a\u0009this.one = function(callback) {\u000a\u0009\u0009// Do stuff...\u000a\u0009\u0009var now = new Date();\u000a\u0009\u0009var a = {\u000a\u0009\u0009\u0009num: d + 1,\u000a\u0009\u0009\u0009time: now.getTime() - start.getTime()\u000a\u0009\u0009};\u000a\u000a\u0009\u0009setTimeout(function() {\u000a\u0009\u0009\u0009callback(false, a);\u000a\u0009\u0009}, 1000);\u000a\u0009};\u000a\u000a\u0009this.two = function(callback) {\u000a\u0009\u0009// Do stuff...\u000a\u0009\u0009var now = new Date();\u000a\u0009\u0009var a = {\u000a\u0009\u0009\u0009num: d + 2,\u000a\u0009\u0009\u0009time: now.getTime() - start.getTime()\u000a\u0009\u0009};\u000a\u000a\u0009\u0009setTimeout(function() {\u000a\u0009\u0009\u0009callback(false, a);\u000a\u0009\u0009}, 100);\u000a\u0009};\u000a\u000a\u0009// ... more see test\u000a\u000a};\u000a\u000a```\u000a\u000a```JavaScript\u000a// merg.js\u000a\u000amodule.exports = function(request,data) {\u000a\u000a\u0009this.one = function(callback) {\u000a\u0009\u0009// Do stuff...\u000a\u0009\u0009var now = new Date();\u000a\u0009\u0009var a = {\u000a\u0009\u0009\u0009num: data.sync.proc_one.num + 1,\u000a\u0009\u0009\u0009time: now.getTime() - start.getTime()\u000a\u0009\u0009};\u000a\u000a\u0009\u0009setTimeout(function() {\u000a\u0009\u0009\u0009callback(false, a);\u000a\u0009\u0009}, 100);\u000a\u0009};\u000a\u000a\u0009this.two = function(callback) {\u000a\u0009\u0009// Do stuff...\u000a\u0009\u0009var now = new Date();\u000a\u0009\u0009var a = {\u000a\u0009\u0009\u0009num: data.sync.proc_two.num + 2,\u000a\u0009\u0009\u0009time: now.getTime() - start.getTime()\u000a\u0009\u0009};\u000a\u000a\u0009\u0009setTimeout(function() {\u000a\u0009\u0009\u0009callback(false, a);\u000a\u0009\u0009}, 200);\u000a\u0009};\u000a\u000a\u0009// ... more see test\u000a\u000a};\u000a\u000a```\u000a\u000a```JavaScript\u000a// error.js\u000a\u000amodule.exports = function(request) {\u000a\u0009this.wrongURL = function(callback) {\u000a\u0009\u0009// Do stuff...\u000a\u0009\u0009callback(true, request.url + \" : Wrong URL is not supported!\");\u000a\u0009};\u000a\u000a\u0009this.wrongMethod = function(callback) {\u000a\u0009\u0009// Do stuff...\u000a\u0009\u0009callback(true, request.method + \" : is not supported!\");\u000a\u0009};\u000a\u000a\u0009// ... more see test\u000a};\u000a\u000a\u000a\u000a```\u000a\u000aThe workflow template is defined as Http Methods -> URL -> fork( sync(tasks) , async(tasks) ) -> merg( tasks ).\u000a\u000a```JSON\u000a// workflow.json\u000a{\u000a  \"GET\": {\u000a    \"/api/stats\": {\u000a      \"sync\": [\u000a        \"proc.one\",\u000a        \"proc.two\"\u000a      ],\u000a      \"async\": [\u000a        \"proc.three\",\u000a        \"proc.four\"\u000a      ],\u000a      \"merg\": [\u000a        \"merg.one\",\u000a        \"merg.two\"\u000a      ]\u000a    },\u000a    \"*\": {\u000a      \"sync\": [\u000a        \"error.wrongURL\"\u000a      ]\u000a    }\u000a  },\u000a  \"*\": {\u000a    \"*\": {\u000a      \"async\": [\u000a        \"error.wrongMethod\"\u000a      ]\u000a    }\u000a  }\u000a}\u000a\u000a```\u000a\u000a\u000a\u000a## License\u000aThe MIT License (MIT)\u000aCopyright (c) 2014 Aryan Eftekhari\u000a","readmeFilename":"README.md","_id":"wireframe@1.0.0","_shasum":"ac5ecc06dde3fe938f44cd5a951b8336051a207b","_from":".","_npmVersion":"1.4.9","_npmUser":{"name":"aefty","email":"aryan.eftekhari@gmail.com"},"maintainers":[{"name":"aefty","email":"aryan.eftekhari@gmail.com"}],"dist":{"shasum":"ac5ecc06dde3fe938f44cd5a951b8336051a207b","tarball":"http://registry.npmjs.org/wireframe/-/wireframe-1.0.0.tgz"}}: wireframe
+47 error     at RegClient.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:273:14)
+47 error     at Request._callback (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:211:65)
+47 error     at Request.self.callback (/usr/local/lib/node_modules/npm/node_modules/request/request.js:123:22)
+47 error     at Request.EventEmitter.emit (events.js:98:17)
+47 error     at Request.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:893:14)
+47 error     at Request.EventEmitter.emit (events.js:117:20)
+47 error     at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:844:12)
+47 error     at IncomingMessage.EventEmitter.emit (events.js:117:20)
+47 error     at _stream_readable.js:919:16
+47 error     at process._tickCallback (node.js:419:13)
+48 error If you need help, you may report this *entire* log,
+48 error including the npm and node versions, at:
+48 error     <http://github.com/npm/npm/issues>
+49 error System Darwin 13.2.0
+50 error command "node" "/usr/local/bin/npm" "publish"
+51 error cwd /Users/aryaneftekhari/Google-Drive/Projects/nodejs/wireframe
+52 error node -v v0.10.28
+53 error npm -v 1.4.9
+54 verbose exit [ 1, true ]

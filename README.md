@@ -143,39 +143,39 @@ module.exports = function(request) {
 
 ```
 
-The workflow template is defined as Http Methods -> URL -> (sync/async) -> Functions.
+The workflow template is defined as Http Methods -> URL -> fork( sync(tasks) , async(tasks) ) -> merg( tasks ).
 
 ```JSON
 // workflow.json
 {
-"GET": {
-	"/api/stats": {
-	"sync": [
-		"proc.one",
-		"proc.two"
-	],
-	"async": [
-		"proc.three",
-		"proc.four"
-	],
-	"merg": [
-		"merg.one",
-		"merg.two"
-	]
-	},
-	"*": {
-	"sync": [
-		"error.wrongURL"
-	]
-	}
-},
-"*": {
-	"*": {
-	"async": [
-		"error.wrongMethod"
-	]
-	}
-}
+  "GET": {
+    "/api/stats": {
+      "sync": [
+        "proc.one",
+        "proc.two"
+      ],
+      "async": [
+        "proc.three",
+        "proc.four"
+      ],
+      "merg": [
+        "merg.one",
+        "merg.two"
+      ]
+    },
+    "*": {
+      "sync": [
+        "error.wrongURL"
+      ]
+    }
+  },
+  "*": {
+    "*": {
+      "async": [
+        "error.wrongMethod"
+      ]
+    }
+  }
 }
 
 ```
