@@ -4,27 +4,15 @@
  * @return {false}
  */
 module.exports = function(request, data) {
-    var start = new Date();
+    var t = new Date();
+    var start = t.getTime()
 
     this.one = function(callback) {
         // Do stuff...
         var now = new Date();
         var a = {
             num: data.sync.proc_one.num + 1,
-            time: now.getTime() - start.getTime()
-        };
-
-        setTimeout(function() {
-            callback(false, a);
-        }, 100);
-    };
-
-    this.two = function(callback) {
-        // Do stuff...
-        var now = new Date();
-        var a = {
-            num: data.sync.proc_two.num + 2,
-            time: now.getTime() - start.getTime()
+            time: now.getTime() - start
         };
 
         setTimeout(function() {
@@ -32,12 +20,25 @@ module.exports = function(request, data) {
         }, 200);
     };
 
+    this.two = function(callback) {
+        // Do stuff...
+        var now = new Date();
+        var a = {
+            num: data.sync.proc_two.num + 2,
+            time: now.getTime() - start
+        };
+
+        setTimeout(function() {
+            callback(false, a);
+        }, 100);
+    };
+
     this.three = function(callback) {
         // Do stuff...
         var now = new Date();
         var a = {
             num: data.sync.proc_one.num + 3,
-            time: now.getTime() - start.getTime()
+            time: now.getTime() - start
         };
 
         setTimeout(function() {
@@ -50,7 +51,7 @@ module.exports = function(request, data) {
         var now = new Date();
         var a = {
             num: data.sync.proc_one.num + 4,
-            time: now.getTime() - start.getTime()
+            time: now.getTime() - start
         };
 
         setTimeout(function() {
@@ -64,7 +65,7 @@ module.exports = function(request, data) {
         var now = new Date();
         var a = {
             num: data.sync.proc_one.num + 5,
-            time: now.getTime() - start.getTime()
+            time: now.getTime() - start
         };
 
         setTimeout(function() {

@@ -5,27 +5,15 @@
  */
 module.exports = function(request) {
     var d = 1;
-    var start = new Date();
+    var t = new Date();
+    var start = t.getTime()
 
     this.one = function(callback) {
         // Do stuff...
         var now = new Date();
         var a = {
             num: d + 1,
-            time: now.getTime() - start.getTime()
-        };
-
-        setTimeout(function() {
-            callback(false, a);
-        }, 1000);
-    };
-
-    this.two = function(callback) {
-        // Do stuff...
-        var now = new Date();
-        var a = {
-            num: d + 2,
-            time: now.getTime() - start.getTime()
+            time: now.getTime() - start,
         };
 
         setTimeout(function() {
@@ -33,12 +21,25 @@ module.exports = function(request) {
         }, 100);
     };
 
+    this.two = function(callback) {
+        // Do stuff...
+        var now = new Date();
+        var a = {
+            num: d + 2,
+            time: now.getTime() - start
+        };
+
+        setTimeout(function() {
+            callback(false, a);
+        }, 200);
+    };
+
     this.three = function(callback) {
         // Do stuff...
         var now = new Date();
         var a = {
             num: d + 3,
-            time: now.getTime() - start.getTime()
+            time: now.getTime() - start
         };
 
         setTimeout(function() {
@@ -51,12 +52,12 @@ module.exports = function(request) {
         var now = new Date();
         var a = {
             num: d + 4,
-            time: now.getTime() - start.getTime()
+            time: now.getTime() - start
         };
 
         setTimeout(function() {
             callback(false, a);
-        }, 300);
+        }, 200);
     };
 
     this.five = function(callback) {
@@ -64,7 +65,7 @@ module.exports = function(request) {
         var now = new Date();
         var a = {
             num: d + 5,
-            time: now.getTime() - start.getTime()
+            time: now.getTime() - start
         };
 
         setTimeout(function() {
