@@ -9,9 +9,7 @@ var pkgs = {
 };
 
 var api = new wireframe(wf, pkgs); // 3. Instantiate Wireframe
-
 var server = http.createServer(function(req, res) {
-
     api.run(req, function(err, data) { // 4. Starting doing stuff!
         // Do something
         console.log('error:' + err);
@@ -19,5 +17,4 @@ var server = http.createServer(function(req, res) {
         res.end('done');
     });
 });
-
 server.listen(8080, 'localhost');

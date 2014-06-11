@@ -5,7 +5,7 @@
  */
 module.exports = function(request, data) {
     var t = new Date();
-    var start = t.getTime()
+    var start = t.getTime();
 
     this.one = function(callback) {
         // Do stuff...

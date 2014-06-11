@@ -6,14 +6,14 @@
 module.exports = function(request) {
     var d = 1;
     var t = new Date();
-    var start = t.getTime()
+    var start = t.getTime();
 
     this.one = function(callback) {
         // Do stuff...
         var now = new Date();
         var a = {
             num: d + 1,
-            time: now.getTime() - start,
+            time: now.getTime() - start
         };
 
         setTimeout(function() {
