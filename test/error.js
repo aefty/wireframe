@@ -3,7 +3,7 @@
  * @param  {Object} request Http Request Object
  * @return {Null}
  */
-module.exports = function(request) {
+module.exports = function(request, response, data) {
 
     this.wrongURL = function(callback) {
 

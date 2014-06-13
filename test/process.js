@@ -3,7 +3,7 @@
  * @param  {Object} request Http request objects
  * @return {false}
  */
-module.exports = function(request) {
+module.exports = function(request, response, data) {
     var d = 1;
     var t = new Date();
     var start = t.getTime();

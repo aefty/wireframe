@@ -10,8 +10,7 @@
         "proc.four"
     ],
       "merg": [
-        "merg.one",
-        "merg.two"
+        "merg.final"
       ]
     },
     "*": {
