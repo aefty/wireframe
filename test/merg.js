@@ -3,17 +3,14 @@
  * @param  {Object} request Http request objects
  * @return {false}
  */
-module.exports = function(request, response, data) {
 
+module.exports = function(request, data) {
 
     this.final = function(callback) {
         // Do stuff...
 
-        response.done(data);
-
         data.output = 'finished';
-
-        callback(false, a);
+        callback(false, data);
 
     };
 

@@ -3,17 +3,15 @@
  * @param  {Object} request Http request objects
  * @return {false}
  */
-module.exports = function(request, response, data) {
+module.exports = function(request, data) {
     var d = 1;
-    var t = new Date();
-    var start = t.getTime();
+    var start = Date.now();
 
     this.one = function(callback) {
         // Do stuff...
-        var now = new Date();
         var a = {
             num: d + 1,
-            time: now.getTime() - start
+            time: Date.now() - start,
         };
 
         setTimeout(function() {
@@ -23,10 +21,9 @@ module.exports = function(request, response, data) {
 
     this.two = function(callback) {
         // Do stuff...
-        var now = new Date();
         var a = {
             num: d + 2,
-            time: now.getTime() - start
+            time: Date.now() - start
         };
 
         setTimeout(function() {
@@ -36,10 +33,9 @@ module.exports = function(request, response, data) {
 
     this.three = function(callback) {
         // Do stuff...
-        var now = new Date();
         var a = {
             num: d + 3,
-            time: now.getTime() - start
+            time: Date.now() - start
         };
 
         setTimeout(function() {
@@ -49,10 +45,9 @@ module.exports = function(request, response, data) {
 
     this.four = function(callback) {
         // Do stuff...
-        var now = new Date();
         var a = {
             num: d + 4,
-            time: now.getTime() - start
+            time: Date.now() - start
         };
 
         setTimeout(function() {
@@ -62,10 +57,9 @@ module.exports = function(request, response, data) {
 
     this.five = function(callback) {
         // Do stuff...
-        var now = new Date();
         var a = {
             num: d + 5,
-            time: now.getTime() - start
+            time: Date.now() - start
         };
 
         setTimeout(function() {
