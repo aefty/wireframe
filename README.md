@@ -1,10 +1,17 @@
 # Wireframe
-Wireframe is a thin wrapper that routes your requests and processes them based on a JSON template. This framework minimizes code duplication and allows a flexible workflow that asynchronously processes a set of synchronous and asynchronous tasks (Fork), upon completion the results of the requests is run asynchronously through another set of tasks (Merg).
-```
-Response = Sync(request){ fork(request){ Sync(){Tn...} + Async(){Tn...} } , merg(request,data){ Async(){Tn...} }}
+Wireframe is a thin wrapper that routes your requests and processes them based on a JSON template. This framework minimizes code duplication and allows a flexible workflow that asynchronously processes a set of synchronous and asynchronous tasks (async & sync), upon completion, the results of the requests is avaiable for run asynchronously through another set of tasks (merg).
 
 ```
+					#async	
+				  / Task_1 -> \
+			 /-> |  Task_2 ->  |---------------------\		   #merg
+	   		|	  \ Task_3 -> /						  |	    / Task_7 -> \
+requests -->|								          |--> |  Task_8 ->  | ->
+	  	    |	  /	          #sync		     \	      |     \ Task_9 -> /
+			 \-> | Task_4 -> Task_5 -> Task_6 | -----/
+			 	  \							 /
 
+```
 ## Install
 
 Get package via npm
@@ -44,7 +51,7 @@ server.listen(8080, 'localhost');
 
 ```
 
-The process can be written in any number of modules and 'require()' in the main file. The request parameter being passed in will point to the http request object. Wireframe is based on the async library and uses "serial" and "parallel".
+The process can be written in any number of modules and 'require()' in the main file. The request parameter will point to the http request object. Wireframe is based on the async library and uses "serial" and "parallel".
 
 ```JavaScript
 // process.js
@@ -165,14 +172,14 @@ The workflow template is defined as Http Methods -> URL -> fork( sync(tasks) , a
     },
     "*": {
       "sync": [
-        "error.wrongURL"
+        "e.wrongURL"
       ]
     }
   },
   "*": {
     "*": {
       "async": [
-        "error.wrongMethod"
+        "e.wrongMethod"
       ]
     }
   }

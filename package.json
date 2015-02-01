@@ -1,6 +1,6 @@
 {
   "name": "wireframe",
-  "version": "1.2.5",
+  "version": "1.0.0",
   "description": "Request routing & control flow via JSON",
   "main": "./lib/wireframe.js",
   "dependencies": {
