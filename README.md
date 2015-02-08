@@ -2,14 +2,14 @@
 Wireframe is a thin wrapper that routes your requests and processes them based on a JSON template. This framework minimizes code duplication and allows a flexible workflow that asynchronously processes a set of synchronous and asynchronous tasks (async & sync), upon completion, the results of the requests is avaiable for run synchronously through another set of tasks (merg).
 
 ```
-			     	#async	
-				 / Task_1 -> \
-			 /->|  Task_2 ->  |---------------\		          #merg
-	   		|	 \ Task_3 -> /				   |	/                       \
-Requests -->|							       |-->| Task_7 ->Task_8->Task_9|->Response
-	  	    |	 /	          #sync		     \ |    \                       /
-			 \->| Task_4 -> Task_5 -> Task_6 |-/
-			 	 \							 /
+			     #async	
+			   /Task_1 ->\
+		   /->| Task_2 -> |-----------\		         #merg
+	   	  |	   \Task_3 ->/			   |   /                    \
+Requests->|							   |->|Task_7->Task_8->Task_9|->Response
+	  	  |	   /       #sync	    \  |   \                    /
+		   \->|Task_4->Task_5->Task_6|-/
+			   \					/
 
 ```
 ## Install
